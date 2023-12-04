@@ -25,6 +25,8 @@ export const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
           <MdDone />
         </span>
       </div>
+
     </form>
+
   );
 };
