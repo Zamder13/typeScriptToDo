@@ -11,7 +11,7 @@ type Prop = {
 
 export const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
   const [edit, setEdit] = useState<boolean>(false);
-  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+  const [editToDo, setEditToDo] = useState<string>(todo.todo);
 
   const handleDone = (id: number) => {
     setTodos(
@@ -24,23 +24,25 @@ export const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
   const handleDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
 
-    setTodos(todos.map((todo) => (todo.id === id ?{ ...todo, todo: editTodo}: todo)))
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, todo: editToDo } : todo))
+    );
 
-    setEdit(false)
+    setEdit(false);
   };
 
   return (
-    <form
-      className="todos__single"
-      onSubmit={(e) => {
-        handleEdit(e, todo.id);
-      }}
-    >
+    <form className="todos__single" onSubmit={(e) => handleEdit(e, todo.id)}>
       {edit ? (
-        <input value={editTodo}    onChange={(e)=>{setEditTodo(e.target.value)}} className="todos__single--text"/>
+        <input
+          value={editToDo}
+          onChange={(e) => setEditToDo(e.target.value)}
+          className="todos__single--text"
+        />
       ) : todo.isDone ? (
         <s className="todos__single--text">{todo.todo}</s>
       ) : (
