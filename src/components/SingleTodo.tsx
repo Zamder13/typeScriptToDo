@@ -70,3 +70,4 @@ export const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
     </form>
   );
 };
+// merge conflict resolve
