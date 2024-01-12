@@ -39,10 +39,6 @@ export const SingleTodo = ({ todo, todos, setTodos }: Prop) => {
 
   useEffect(() => {
     inputRef.current?.focus();
-
-
-
-    
   }, [edit]);
 
   return (
